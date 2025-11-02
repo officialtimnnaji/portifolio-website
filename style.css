@@ -34,6 +34,20 @@ body {
   line-height: 1.6;
   transition: background var(--transition), color var(--transition);
   padding: 40px;
+
+
+  body {
+  background: linear-gradient(-45deg, #0f1724, #1a1f2c, #9b1c31, #0f1724);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
 }
 
 header {
@@ -224,3 +238,27 @@ nav a:hover {
 html {
   scroll-behavior: smooth;
 }
+
+#about:hover,
+#contact:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 40px var(--accent);
+}
+
+.project:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 0 30px var(--accent);
+}
+
+.project a i {
+  margin-left: 6px;
+  transition: transform 0.3s ease;
+}
+
+.project a:hover i {
+  transform: translateX(5px);
+}
+
+
+
+

@@ -2,6 +2,10 @@
 //  LuxuryNad Portfolio Script
 // =============================
 
+
+
+
+
 // Theme Toggle
 const toggle = document.createElement("button");
 toggle.className = "theme-toggle";
@@ -10,7 +14,8 @@ document.body.appendChild(toggle);
 
 const currentTheme = localStorage.getItem("theme") || "dark";
 document.documentElement.setAttribute("data-theme", currentTheme);
-if (currentTheme === "light") toggle.innerHTML = "☀️";
+if (currentTheme === "light") toggle.innerHTML = '<i class="fa-solid fa-moon"></i>'; // dark mode
+
 
 toggle.addEventListener("click", () => {
   const newTheme =
@@ -19,7 +24,10 @@ toggle.addEventListener("click", () => {
       : "dark";
   document.documentElement.setAttribute("data-theme", newTheme);
   localStorage.setItem("theme", newTheme);
-  toggle.innerHTML = newTheme === "light" ? "☀️" : "🌙";
+  toggle.innerHTML = newTheme === "light"
+  ? '<i class="fa-solid fa-sun"></i>'
+  : '<i class="fa-solid fa-moon"></i>';
+
 });
 
 // Projects
@@ -55,7 +63,10 @@ projects.forEach((project) => {
   card.innerHTML = `
     <h3>${project.name}</h3>
     <p>${project.role}</p>
-    <a href="${project.link}" target="_blank">View Project</a>
+    <a href="${project.link}" target="_blank">
+  View Project <i class="fa-solid fa-arrow-right"></i>
+</a>
+
   `;
   projectContainer.appendChild(card);
 });
@@ -73,3 +84,23 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll("section").forEach((section) => observer.observe(section));
+
+
+tsParticles.load("tsparticles", {
+  particles: {
+    number: { value: 25 },        // fewer particles
+    size: { value: 2 },           // smaller particles
+    move: { speed: 0.8 },         // slower movement
+    color: { value: "#9b1c31" },  // red wine accent
+    opacity: { value: 0.3 },     // subtle opacity
+    line_linked: {
+      enable: true,
+      color: "#9b1c31",
+      opacity: 0.1               // very faint lines
+    }
+  },
+  detectRetina: true,
+  background: {
+    color: "transparent"           // keep background same as dark mode
+  }
+});
